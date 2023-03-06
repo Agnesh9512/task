@@ -11,6 +11,11 @@ body{
     height: 100%;
     filter: blur(1px);   
 }
+.centered{
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
 form{
     display: none;
 }
@@ -44,6 +49,9 @@ form{
 #close{
     width: 100px;
     float: right;
+}
+#foot{
+  background-color:  #cdd8e5 !important;
 }
 .fa {
     padding: 8px;
@@ -80,5 +88,35 @@ form{
   }
   .fa-github {
     background: #000000;
+    color: white;
+  }
+  .card{
+    background-color: #d3e6f4;
+  }
+  .slick-track {
+    margin-bottom: 13px;
+  }
+  .slick-prev {
+    left: -21px;
+    background-color: darkgray;
+    border-radius: 6px;
+  }
+  .slick-prev:before {
+    font-size: 18px;
+    line-height: 1.1;
+    color: white;
+  }
+  .slick-prev.slick-disabled:before {
+    opacity: 1.25;
+  }
+  .slick-next {
+    right: -21px;
+    background-color: darkgray;
+    border-radius: 6px;
+  }
+  .slick-next:before { 
+    font-size: 18px;
+    line-height: 1.1;
+    opacity: 1.25;
     color: white;
   }

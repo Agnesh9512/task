@@ -15,3 +15,11 @@ body{
   border: 2px solid rgb(175, 178, 180);
   border-radius: 5px;
 }
+
+#dataform{
+  display: none;
+}
+.card{
+  padding-left: 10px;
+  margin-top: 2px;
+}

@@ -1,8 +1,18 @@
+
+
+for(i=1; i<=localStorage.length; i++){
+  let obj = JSON.parse(localStorage.getItem(i));
+      pName = obj.name;
+      pPrize = obj.prize;
+      pCategory = obj.category;
+      let userData ='<div><label> Product Name : <span id="name">'+pName+'</span> </label><br><label> Product Prize : <span id="prize">'+pPrize+'</span> </label><br> <label> Product Category : <span id="category">'+pCategory+'</span> </label><br></div>'
+      $("#dataAdd").append(userData);
+}
+
 $(document).ready(function(){
-  data();
   $("#addproduct").click(function(){
   	console.log('caling')
-  	$("#productform").append(
+  	$("#productdata").html(
       '<form class="form mt-3">' +
   		'<div class="p-3">' +
   		'<div>' +
@@ -25,26 +35,13 @@ $(document).ready(function(){
     );
   });
 });
-
 function product(){
-  let Productname = document.getElementById('pname');
-  let Productprize = document.getElementById('pprize');
-  let Productcategory = document.getElementById('pcategory');
-  
-  console.log(Productname);
-  console.log(Productprize);
-  console.log(Productcategory);
-  localStorage.setItem('pname', Productname.value);
-  localStorage.setItem('pprize', Productprize.value);
-  localStorage.setItem('pcategory', Productcategory.value); 
+  i = localStorage.length + 1;
+  let pName = document.getElementById('pname').value;
+  let pPrize = document.getElementById('pprize').value;
+  let pCategory = document.getElementById('pcategory').value;
+  const data = { name: pName, prize: pPrize, category: pCategory};
+  localStorage.setItem(i,JSON.stringify(data));
 };
 
-function data(){
-  let Productname =localStorage.getItem('pname');
-  let Productprize =localStorage.getItem('pprize');
-  let Productcategory =localStorage.getItem('pcategory');
-  document.getElementById('name').innerHTML = Productname;
-  document.getElementById('prize').innerHTML = Productprize;
-  document.getElementById('category').innerHTML = Productcategory;
 
-};

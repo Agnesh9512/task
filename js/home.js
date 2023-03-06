@@ -9,9 +9,9 @@ function store(){
     } else if(password.value.length == 0){
         alert('please fill details');
     } else{
-        localStorage.setItem('username', username.value);
-        localStorage.setItem('email', email.value);
-        localStorage.setItem('pass', password.value);
+        sessionStorage.setItem('username', username.value);
+        sessionStorage.setItem('email', email.value);
+        sessionStorage.setItem('pass', password.value);
     }
     console.log(username);
     console.log(email);
@@ -29,9 +29,9 @@ function save(){
     } else if(password.value.length == 0){
         alert('please fill details');
     } else{
-        localStorage.setItem('uname', username.value);
-        localStorage.setItem('emailid', email.value);
-        localStorage.setItem('pass1', password.value);
+        sessionStorage.setItem('uname', username.value);
+        sessionStorage.setItem('emailid', email.value);
+        sessionStorage.setItem('pass1', password.value);
     }
     console.log(username);
     console.log(email);
