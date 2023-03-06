@@ -7,12 +7,16 @@
   <meta name="viewport" content="width=device-width" initial-scale="1.0">
   <title>Login Page</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
   <script src="/js/home.js"></script>
+  <script src="/js/admin.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
   <link rel="stylesheet" type="text/css" href="/css/home.css">
 </head>
 
@@ -23,7 +27,7 @@
         <a href="#home" class="nav-item d-inline-flex px-3">Home</a>
         <div class="nav-item d-inline-flex justify-content-end collapse navbar-collapse">
           <a href="/html/admin.html" target="_blank" class="nav-item d-inline-flex px-3">Admin Login</a>
-          <a href="#signin" id="sign_in" class="nav-item d-inline-flex px-3" data-target="form" data-toggle="modal">Sign In</a>
+          <a href="#signin" id="sign_in" class="nav-item d-inline-flex px-3" data-target="#form1" data-toggle="modal">Sign In</a>
           <a href="#signup" id="sign_up" class="nav-item d-inline-flex px-3" data-target="#form" data-toggle="modal">Sign Up</a>
         </div>
       </div>
@@ -35,7 +39,7 @@
   </div>
 
   <div class="container">
-    <form class="needs-validation novalidate">
+    <form id="form1" class="needs-validation novalidate">
       <div class="modal-dialog" role="document">
         <div class="modal-content modal">
           <div class="modal-header text-center">
@@ -54,8 +58,8 @@
             <input id="pass" type="password" class="form-control" placeholder="Password" required>
           </div>
           <div class="md-form pt-2 mb-4 text-xl-center">
-            <button id="submit" type="submit" class="btn btn-primary form-control" onclick="store()">Submit</button>
-            <button id="close" class="btn btn-secondary btn-outline-light form-control" data-dismiss="modal">Cancle</button>
+            <button id="submitin" type="submit" class="btn btn-primary form-control" onclick="store()">Submit</button>
+            <button id="cancle" class="close-modal btn btn-secondary btn-outline-light form-control" data-dismiss="modal">Cancle</button>
           </div>
         </div>
       </div>
@@ -80,15 +84,20 @@
             <input id="pass1" type="password" class="form-control" placeholder="Password" required>
           </div>
           <div class="md-form mb-4 text-xl-center">
-            <button id="submit" type="submit" class="btn btn-primary form-control" onclick="save()">Submit</button>
-            <button id="close" class="btn btn-secondary btn-outline-light form-control" data-dismiss="modal">Cancle</button>
+            <button id="submitup" type="submit" class="btn btn-primary form-control" onclick="save()">Submit</button>
+            <button id="close" class="close-modal btn btn-secondary btn-outline-light form-control" data-dismiss="modal">Cancle</button>
           </div>
         </div>
       </div>
     </form>
   </div>
 
-  <footer class="text-center text-white bg-light">
+  <div class="container">
+    <div id="cardslider">
+    </div>
+  </div>  
+
+  <footer id="foot" class="text-center text-white bg-light">
     <div class="container p-3">
       <section class="px-2">
         <a href="#" class="fa fa-facebook"></a>
@@ -109,3 +118,50 @@
 </body>
 
 </html>
+
+<script>
+  
+  $(document).ready(function(){
+    $("#cardslider").slick({
+      dots: true,
+      infinite: false,
+      speed: 300,
+      slidesToShow: 4,
+      slidesToScroll: 4,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+    });
+  });
+
+  for(i=1; i<=localStorage.length; i++){
+    let obj = JSON.parse(localStorage.getItem(i));
+    pName = obj.name;
+    pPrize = obj.prize;
+    pCategory = obj.category;
+    let userData ='<div class="card card-body p-lg-5 mt-4"><div id="productdata"><label> Product Name : <span id="name">'+pName+'</span> </label><br><label> Product Prize : <span id="prize">'+pPrize+'</span> </label><br><label> Product Category : <span id="category">'+pCategory+'</span> </label><br></div></div>'
+    $("#cardslider").append(userData);
+  }
+</script>
