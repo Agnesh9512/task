@@ -158,10 +158,10 @@
 
   for(i=1; i<=localStorage.length; i++){
     let obj = JSON.parse(localStorage.getItem(i));
-        pName = obj.name;
-        pPrize = obj.prize;
-        pCategory = obj.category;
-        let userData ='<div class="card card-body p-lg-5 mt-4"><div id="productdata"><label> Product Name : <span id="name">'+pName+'</span> </label><br><label> Product Prize : <span id="prize">'+pPrize+'</span> </label><br><label> Product Category : <span id="category">'+pCategory+'</span> </label><br></div></div>'
-        $("#cardslider").append(userData);
+    pName = obj.name;
+    pPrize = obj.prize;
+    pCategory = obj.category;
+    let userData ='<div class="card card-body p-lg-5 mt-4"><div id="productdata"><label> Product Name : <span id="name">'+pName+'</span> </label><br><label> Product Prize : <span id="prize">'+pPrize+'</span> </label><br><label> Product Category : <span id="category">'+pCategory+'</span> </label><br></div></div>'
+    $("#cardslider").append(userData);
   }
 </script>
